@@ -22,15 +22,19 @@ public class Studentmanagment {
         String user ="root";
         String password = "1234";
         
-        String sql = "select * from student where age=22";
+        String sql = "select * from student";
         
         Connection con = DriverManager.getConnection(url, user, password);
         Statement st=con.createStatement();
         ResultSet re = st.executeQuery(sql);
         
-        re.next();
-        String name = re.getString("fullname");
-        System.out.println(name);
+        String name = "";
+        while(re.next()){
+           name = re.getString("fullname");
+           System.out.println(name);
+        }
+        
+        con.close();
         
     }
     
